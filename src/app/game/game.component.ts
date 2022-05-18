@@ -1,4 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
+import { KarteModel, Karten} from "../Model/karte-modules";
+import {SpielModel} from "../Model/spiel-module";
+import {SPIELER, SpielerModel} from "../Model/spieler-module";
 
 @Component({
   selector: 'app-game',
@@ -6,10 +10,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
+    spiel: SpielModel;
+    karten: KarteModel[]=[];
 
-  constructor() { }
+    constructor() {
+      this.spiel = new SpielModel("hallo");
+      this.karten = this.spiel.erzeugekarten();
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void{
+      console.log(this.karten);
+    }
 
 }
